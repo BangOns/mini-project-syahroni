@@ -10,14 +10,29 @@ import {
 } from "@/app/libs/firebase/services";
 import { cookies } from "next/headers";
 
+async function getCookies() {
+  const getCookies = cookies().get("token");
+  try {
+    if (getCookies) {
+      const getCollectionWithCookies = cookies()
+        .get("token")
+        ?.value.split("||")[2];
+      const getIDWithCookies = cookies().get("token")?.value.split("||")[0];
+
+      const data = await retrieveDataById(
+        getCollectionWithCookies,
+        getIDWithCookies
+      );
+      const dataFeedback = await retrieveDataFeedback((value) => value);
+      return { data, dataFeedback };
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default async function Profile() {
-  const getCollectionWithCookies = cookies().get("token")?.value.split("||")[2];
-  const getIDWithCookies = cookies().get("token")?.value.split("||")[0];
-  const data = await retrieveDataById(
-    getCollectionWithCookies,
-    getIDWithCookies
-  );
-  const dataFeedback = await retrieveDataFeedback((value) => value);
+  const { data, dataFeedback } = await getCookies();
   return (
     <Fragment>
       {/* Header */}

@@ -5,11 +5,22 @@ import HeaderDashboard from "./Compoent_Dashboard/HeaderDashboard";
 import { filterDataRoleMahasiswa } from "@/app/libs/firebase/services";
 import { cookies } from "next/headers";
 
+async function getCookies() {
+  const getCookies = cookies().get("token");
+  try {
+    if (getCookies) {
+      const CookiesMapel = cookies().get("token")?.value.split("||")[2];
+      const { ListDataCard, filterRoleMahasiswa } =
+        await filterDataRoleMahasiswa(CookiesMapel);
+      return { ListDataCard, filterRoleMahasiswa };
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default async function Dashboard() {
-  const CookiesMapel = cookies().get("token")?.value.split("||")[2];
-  const { ListDataCard, filterRoleMahasiswa } = await filterDataRoleMahasiswa(
-    CookiesMapel
-  );
+  const { ListDataCard, filterRoleMahasiswa } = await getCookies();
   return (
     <Fragment>
       <HeaderDashboard />
