@@ -12,7 +12,7 @@ import IconsBelumAbsen from "@/app/assets/icons/Icons-Belum-Absen.png";
 import IconsCalendar from "@/app/assets/icons/Icons-Calendar.png";
 import IconsEyesPassword from "@/app/assets/icons/Icons-EyesPassword.svg";
 import IconsHome from "@/app/assets/icons/Icons-Home.svg";
-import IconsProfile from "@/app/assets/icons/Icons-Profile.svg";
+import IconsUser from "@/app/assets/icons/Icons-User.png";
 import IconsClose from "@/app/assets/icons/Icons-Close.svg";
 import IconsCloseBlack from "@/app/assets/icons/Icons-Close-black.svg";
 import IconsTrash from "@/app/assets/icons/Icons-Sampah.svg";
@@ -22,7 +22,7 @@ export const Icons = {
   IconsDropdown,
   IconsEyesPassword,
   IconsHome,
-  IconsProfile,
+  IconsUser,
   IconsLogout,
   IconsClose,
   IconsCloseBlack,

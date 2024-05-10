@@ -10,7 +10,7 @@ export const ListLink = {
     {
       page: "/profile",
       name: "Profile",
-      icons: Icons.IconsProfile,
+      icons: Icons.IconsUser,
     },
   ],
   Mahasiswa: [
@@ -22,7 +22,7 @@ export const ListLink = {
     {
       page: "/profile",
       name: "Profile",
-      icons: Icons.IconsProfile,
+      icons: Icons.IconsUser,
     },
   ],
 };
