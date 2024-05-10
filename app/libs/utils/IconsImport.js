@@ -1,5 +1,5 @@
 import IconsQuotes from "@/app/assets/icons/Icons-Quotes.png";
-import IconsDropdown from "@/app/assets/icons/Icons-DropDown.png";
+import IconsDropdown from "@/app/assets/icons/Icons-Dropdown.png";
 import IconsLogout from "@/app/assets/icons/Icons-Logout.png";
 import IconsDashboard from "@/app/assets/icons/Icons-Dashboard.png";
 import IconsCollections from "@/app/assets/icons/Icons-Collections.png";
