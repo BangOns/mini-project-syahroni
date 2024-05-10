@@ -11,8 +11,8 @@ import {
 import { cookies } from "next/headers";
 
 export default async function Profile() {
-  const getCollectionWithCookies = cookies().get("token").value.split("||")[2];
-  const getIDWithCookies = cookies().get("token").value.split("||")[0];
+  const getCollectionWithCookies = cookies().get("token")?.value.split("||")[2];
+  const getIDWithCookies = cookies().get("token")?.value.split("||")[0];
   const data = await retrieveDataById(
     getCollectionWithCookies,
     getIDWithCookies

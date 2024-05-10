@@ -6,7 +6,7 @@ import { filterDataRoleMahasiswa } from "@/app/libs/firebase/services";
 import { cookies } from "next/headers";
 
 export default async function Dashboard() {
-  const CookiesMapel = cookies().get("token").value.split("||")[2];
+  const CookiesMapel = cookies().get("token")?.value.split("||")[2];
   const { ListDataCard, filterRoleMahasiswa } = await filterDataRoleMahasiswa(
     CookiesMapel
   );
