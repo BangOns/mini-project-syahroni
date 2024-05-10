@@ -6,19 +6,22 @@ import Navbar from "../Navbar/Navbar";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 async function getDataUser() {
-  const getKeyInCookies = cookies().get("token").value.split("||");
+  const getCookies = cookies().get("token");
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/userId/${getKeyInCookies[0]}`,
-      {
-        method: "GET",
-        cache: "no-store",
-        headers: {
-          "Set-Cookie": cookies().get("token").value,
-        },
-      }
-    );
-    return response.json();
+    if (getCookies) {
+      const getKeyInCookies = cookies().get("token").value.split("||");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/userId/${getKeyInCookies[0]}`,
+        {
+          method: "GET",
+          cache: "no-store",
+          headers: {
+            "Set-Cookie": cookies().get("token").value,
+          },
+        }
+      );
+      return response.json();
+    }
   } catch (error) {
     return new Error("Gagal mengambil data user");
   }

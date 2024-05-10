@@ -92,7 +92,7 @@ export default function FormFeedback({ dataUser }) {
               value={dataFeedback.judul}
               onChange={handleChange}
               placeholder="Masukkan Judul"
-              className="w-full h-[40px] rounded py-[11px] px-[10px] border border-black/25 outline-none"
+              className="w-full h-[40px] bg-white  rounded py-[11px] px-[10px] border border-black/25 outline-none"
             />
           </section>
           <section className="w-full pt-[10px]">
@@ -108,7 +108,7 @@ export default function FormFeedback({ dataUser }) {
               value={dataFeedback.deskripsi}
               onChange={handleChange}
               placeholder="Masukkan Deskripsi"
-              className="w-full h-[90px] rounded py-[11px] px-[10px] border border-black/25 outline-none"
+              className="w-full h-[90px] bg-white  rounded py-[11px] px-[10px] border border-black/25 outline-none"
             />
           </section>
           {/* <section className="w-1/2 pt-[10px]">

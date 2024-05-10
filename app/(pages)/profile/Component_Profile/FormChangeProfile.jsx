@@ -170,7 +170,7 @@ export default function FormChangeProfile({ usernames, imageProfile, idUser }) {
           </label>
           <input
             type="text"
-            className="w-full h-[41px] md:h-[51px] rounded-lg outline-none border border-black py-[11px] px-5 text-xl font-semibold  placeholder:text-black/20"
+            className="w-full h-[41px] md:h-[51px] rounded-lg outline-none border border-black py-[11px] px-5 text-xl font-semibold bg-white  placeholder:text-black/20"
             placeholder="Edit username"
             value={username}
             onChange={(e) => usernameSet(e.target.value)}

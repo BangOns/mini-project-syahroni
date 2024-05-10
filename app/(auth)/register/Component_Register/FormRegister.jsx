@@ -102,7 +102,7 @@ export default function FormRegister() {
                   dataUserSet({ ...dataUser, name: e.target.value })
                 }
                 placeholder="Masukkan Username"
-                className="w-full h-[39px] p-2 lg:p-3 border border-opacity-30 placeholder:opacity-40 outline-none rounded-lg font-medium text-base lg:text-lg"
+                className="w-full h-[39px] p-2 lg:p-3 border border-opacity-30 bg-white placeholder:opacity-40 outline-none rounded-lg font-medium text-base lg:text-lg"
               />
             </aside>
             <aside>
@@ -234,7 +234,7 @@ export default function FormRegister() {
                 <input
                   type={isActivePassword ? "text" : "password"}
                   placeholder="Masukkan Password"
-                  className="shrink  p-2 lg:p-3  placeholder:opacity-40 outline-none rounded-l-lg font-medium text-lg"
+                  className="shrink  p-2 lg:p-3  bg-white placeholder:opacity-40 outline-none rounded-l-lg font-medium text-lg"
                   value={dataUser.password}
                   onChange={(e) => {
                     validateFormEmptySet(false);
@@ -262,7 +262,7 @@ export default function FormRegister() {
                 <input
                   type={isActiveConfPassword ? "text" : "password"}
                   placeholder="Masukkan Password"
-                  className="shrink  p-2 lg:p-3  placeholder:opacity-40 outline-none rounded-l-lg font-medium text-lg"
+                  className="shrink  p-2 lg:p-3 bg-white  placeholder:opacity-40 outline-none rounded-l-lg font-medium text-lg"
                   value={confPassword}
                   onChange={(e) => {
                     isSamePasswordSet(false);

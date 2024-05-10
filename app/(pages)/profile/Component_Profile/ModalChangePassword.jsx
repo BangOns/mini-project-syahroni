@@ -49,7 +49,7 @@ export default function ModalChangePassword({ passwordUser }) {
                 <div className="w-full border border-black/30 rounded h-[40px] md:h-[31px] flex items-center">
                   <input
                     type={isActivePassword ? "text" : "password"}
-                    className="shrink w-full outline-none px-2 py-[6px] h-full font-medium"
+                    className="shrink w-full outline-none px-2 py-[6px] h-full font-medium bg-white "
                     placeholder="Masukkan Password Lama"
                     autoComplete="off"
                     value={password}
@@ -79,7 +79,7 @@ export default function ModalChangePassword({ passwordUser }) {
                 <div className="w-full border border-black/30 rounded h-[40px] md:h-[31px] flex items-center">
                   <input
                     type={isActiveConfPassword ? "text" : "password"}
-                    className="shrink w-full outline-none px-2 h-full font-medium"
+                    className="shrink w-full outline-none px-2 h-full font-medium bg-white "
                     placeholder="Masukkan Password Baru"
                     autoComplete="off"
                     value={passwordNew}

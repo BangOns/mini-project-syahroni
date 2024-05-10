@@ -90,7 +90,7 @@ export default function FormLogin() {
                 name="name"
                 value={users.name}
                 onChange={handleChange}
-                className="w-full h-[39px] p-2 lg:p-3 border border-opacity-30 placeholder:opacity-40 outline-none rounded-lg font-medium text-base lg:text-lg"
+                className="w-full h-[39px] p-2 lg:p-3 border border-opacity-30 bg-white placeholder:opacity-40 outline-none rounded-lg font-medium text-base lg:text-lg"
               />
             </aside>
             <aside>
@@ -165,7 +165,7 @@ export default function FormLogin() {
                   value={users.password}
                   name="password"
                   placeholder="Masukkan Password"
-                  className="shrink  p-2 lg:p-3  placeholder:opacity-40 outline-none rounded-l-lg font-medium text-lg"
+                  className="shrink  p-2 lg:p-3 bg-white  placeholder:opacity-40 outline-none rounded-l-lg font-medium text-lg"
                   onChange={handleChange}
                 />
                 <button
