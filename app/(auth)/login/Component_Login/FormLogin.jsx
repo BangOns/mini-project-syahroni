@@ -1,13 +1,10 @@
 "use client";
 import { Icons } from "@/app/libs/utils/IconsImport";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { useForm } from "react-hook-form";
 import { Mapel } from "@/app/libs/utils/List_Pelajaran";
 import {
   ClearDataRegister,

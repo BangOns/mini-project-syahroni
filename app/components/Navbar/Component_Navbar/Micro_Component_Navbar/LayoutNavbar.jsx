@@ -1,15 +1,12 @@
 "use client";
 import Image from "next/image";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { motion } from "framer-motion";
-
 import { Icons } from "@/app/libs/utils/IconsImport";
 import { ImageDummies } from "@/app/libs/utils/ImageDummyImport";
 import ButtonLogout from "./ButtonLogout";
-import { usePathname } from "next/navigation";
 
 export default function LayoutNavbar({ children, imageProfile, name }) {
-  const location = usePathname();
   const [menuBar, menuBarSet] = useState(false);
   const [menuOptions, menuOptionsSet] = useState(false);
 
