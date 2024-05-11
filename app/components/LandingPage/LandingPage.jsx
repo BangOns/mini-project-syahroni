@@ -10,17 +10,11 @@ async function getDataUser() {
   try {
     if (getCookies) {
       const getKeyInCookies = cookies().get("token").value.split("||");
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/userId/${getKeyInCookies[0]}`,
-        {
-          method: "GET",
-          cache: "no-store",
-          headers: {
-            "Set-Cookie": cookies().get("token").value,
-          },
-        }
+      const response = await retrieveDataById(
+        getKeyInCookies[2],
+        getKeyInCookies[0]
       );
-      return response.json();
+      return { response };
     }
   } catch (error) {
     return new Error("Gagal mengambil data user");
@@ -46,14 +40,14 @@ async function GenerateAI(pelajaran) {
   }
 }
 export default async function LandingPage() {
-  const dataUser = await getDataUser();
-  const generateAI = dataUser && (await GenerateAI(dataUser?.data.pelajaran));
+  const { response } = await getDataUser();
+  const generateAI = response && (await GenerateAI(response?.data.pelajaran));
   return (
     <Fragment>
       <Navbar />
-      <MainLandingPage dataUser={dataUser} generateAI={generateAI} />
+      <MainLandingPage dataUser={response} generateAI={generateAI} />
       {/* Form Feedback */}
-      <FormFeedback dataUser={dataUser} />
+      <FormFeedback dataUser={response} />
     </Fragment>
   );
 }
