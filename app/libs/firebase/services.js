@@ -66,11 +66,11 @@ export async function login(data, callback) {
     });
 
     if (checkPrecence.length === 0) {
-      user[0].dateNow = dateNew;
       user[0].precence = [...user[0].precence, dateNew];
-      const newuser = user[0];
-      await updateDoc(updateUser, newuser);
     }
+    user[0].dateNow = dateNew;
+    const newuser = user[0];
+    await updateDoc(updateUser, newuser);
 
     return callback({
       status: true,
