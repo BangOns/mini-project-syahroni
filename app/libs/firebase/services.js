@@ -89,7 +89,7 @@ export async function login(data, callback) {
     return callback({
       status: false,
       statusCode: 500,
-      message: "Nama atau Password salah",
+      message: "Nama atau Password anda salah",
     });
   }
 }
