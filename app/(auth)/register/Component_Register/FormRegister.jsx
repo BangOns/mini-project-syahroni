@@ -75,7 +75,7 @@ export default function FormRegister() {
     <section className="w-full md:w-[377px] lg:w-[438px] flex-none  ">
       <article className="w-full h-full flex flex-col items-center justify-center ">
         <header className="flex flex-col items-center justify-center gap-5">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-medium text-center">
+          <h1 className="text-2xl pt-4 sm:pt-0 md:text-3xl lg:text-4xl font-medium text-center">
             ATTENDANCE
           </h1>
           <h3 className="text-sm md:text-base lg:text-lg font-medium text-center">
@@ -283,7 +283,7 @@ export default function FormRegister() {
               </div>
             </aside>
           </section>
-          <section className="w-full flex flex-col gap-4 pt-[22px] px-5">
+          <section className="w-full flex flex-col gap-4 py-[22px] px-5">
             {isSamePassword && (
               <p className="text-red-500 text-sm">
                 Konfirmasi Password Tidak Sesuai

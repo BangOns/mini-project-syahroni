@@ -1,9 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { Icons } from "@/app/libs/utils/IconsImport";
-import { Ekspresi } from "@/app/libs/utils/List_Ekspresi";
 import { useDispatch, useSelector } from "react-redux";
 import { modalsFeedbackState } from "@/app/libs/redux/feature/PopModalsSlice";
 import { UploadFeedback } from "@/app/libs/redux/feature/FeedbackSlice";
@@ -34,8 +32,8 @@ export default function FormFeedback({ dataUser }) {
     } else {
       const feedbackUser = {
         ...dataFeedback,
-        name: dataUser?.data.name,
-        pelajaran: dataUser?.data.pelajaran,
+        name: dataUser?.name,
+        pelajaran: dataUser?.pelajaran,
       };
       dispatch(UploadFeedback(feedbackUser));
       isErrorFeedbackSet(false);
@@ -111,67 +109,7 @@ export default function FormFeedback({ dataUser }) {
               className="w-full h-[90px] bg-white  rounded py-[11px] px-[10px] border border-black/25 outline-none"
             />
           </section>
-          {/* <section className="w-1/2 pt-[10px]">
-            <label
-              htmlFor="ekspresi"
-              className="block font-medium text-base pb-1"
-            >
-              Ekspresi *
-            </label>
-            <div className="w-full h-[40px] flex border rounded-[4px] items-center  relative cursor-pointer ">
-              <div
-                className="grow flex items-center"
-                onClick={() => isSelectSet(!isSelect)}
-              >
-                <p
-                  className={`p-3  ${
-                    ekspresi ? "opacity-100" : "opacity-30"
-                  } font-medium text-base md:text-md lg:text-lg`}
-                >
-                  {ekspresi ? ekspresi : "Ekspresi"}
-                </p>
-              </div>
-              <button
-                type="button"
-                className="w-[30px]  h-full  bg-slate-300 rounded-r-[4px] flex justify-center items-center"
-                onClick={() => isSelectSet(!isSelect)}
-              >
-                <Image
-                  src={Icons.IconsDropdown}
-                  alt="dropdown"
-                  className="w-3 h-3"
-                />
-              </button>
-              <AnimatePresence>
-                {isSelect && (
-                  <motion.div
-                    initial={{ y: -100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -100, opacity: 0 }}
-                    className="w-full z-[1] bg-white absolute top-10 border border-t-transparent rounded-b-[4px]"
-                  >
-                    {Ekspresi?.map((items) => (
-                      <div
-                        key={items}
-                        className=" w-full hover:bg-slate-300 cursor-pointer"
-                        onClick={() => {
-                          isSelectSet(false);
-                          ekspresiSet(items);
-                        }}
-                      >
-                        <p
-                          key={items}
-                          className="px-3 py-1 text-base font-medium"
-                        >
-                          {items}
-                        </p>
-                      </div>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </section> */}
+
           <section className="w-full flex flex-col items-end justify-center pt-[16px] ">
             {isErrorFeedback && (
               <p className="text-xs text-red-500 pb-3">

@@ -4,6 +4,7 @@ import MainLandingPage from "./Component_LandingPage/Main_LandingPage";
 import { cookies } from "next/headers";
 import Navbar from "../Navbar/Navbar";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { retrieveDataById } from "@/app/libs/firebase/services";
 
 async function getDataUser() {
   const getCookies = cookies().get("token");
@@ -14,7 +15,7 @@ async function getDataUser() {
         getKeyInCookies[2],
         getKeyInCookies[0]
       );
-      return { response };
+      return response;
     }
   } catch (error) {
     return new Error("Gagal mengambil data user");
@@ -40,8 +41,8 @@ async function GenerateAI(pelajaran) {
   }
 }
 export default async function LandingPage() {
-  const { response } = await getDataUser();
-  const generateAI = response && (await GenerateAI(response?.data.pelajaran));
+  const response = await getDataUser();
+  const generateAI = response && (await GenerateAI(response?.pelajaran));
   return (
     <Fragment>
       <Navbar />

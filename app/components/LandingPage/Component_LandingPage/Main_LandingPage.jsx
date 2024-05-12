@@ -13,7 +13,7 @@ export default function MainLandingPage({ dataUser, generateAI }) {
       <section className="w-full pb-10 lg:pb-20 flex justify-between gap-6 lg:gap-0 flex-wrap lg:flex-nowrap">
         <header className="max-w-md">
           <h1 className=" text-3xl lg:text-[40px] font-medium ">
-            Hello, {dataUser ? dataUser?.data?.name : "Null"}
+            Hello, {dataUser ? dataUser?.name : "Null"}
           </h1>
           <h2 className="text-xl opacity-60 py-6 ">
             Terima kasih sudah absen hari ini !

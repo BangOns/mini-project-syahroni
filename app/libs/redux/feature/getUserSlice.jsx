@@ -10,13 +10,6 @@ const initialState = {
   RegisterAccountFullField: {},
   RegisterAccountPending: false,
 
-  // List user
-  ListUserFullField: [],
-  ListUserPending: false,
-
-  // Get user ID
-  GetUserByIDSFullField: {},
-  GetUserByIDSPending: false,
   // Update user ID
   UpdateUserByIDSFullField: {},
   UpdateUserByIDSPending: false,
@@ -24,19 +17,6 @@ const initialState = {
   DeleteUserFullField: {},
   DeleteUserPending: false,
 };
-
-export const userList = createAsyncThunk("user/list", async (_, thunkAPI) => {
-  try {
-    const res = await fetch("/api/user", {
-      method: "GET",
-      cache: "no-store",
-    });
-    const response = await res.json();
-    return thunkAPI.fulfillWithValue(response);
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
-  }
-});
 
 export const LoginUser = createAsyncThunk(
   "user/login",
@@ -133,17 +113,6 @@ export const UserSlice = createSlice({
       })
       .addCase(CreateUser.pending, (state) => {
         state.RegisterAccountPending = true;
-      });
-    builder
-      .addCase(userList.fulfilled, (state, action) => {
-        state.ListUserFullField.push(action.payload);
-        state.ListUserPending = false;
-      })
-      .addCase(userList.rejected, (state) => {
-        state.ListUserPending = false;
-      })
-      .addCase(userList.pending, (state) => {
-        state.ListUserPending = true;
       });
 
     builder
