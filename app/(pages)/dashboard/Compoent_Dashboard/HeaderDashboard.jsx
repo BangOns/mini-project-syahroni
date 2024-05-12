@@ -10,7 +10,7 @@ export default async function HeaderDashboard() {
     <section className="w-full  pb-[33px] flex justify-between gap-6 lg:gap-0 flex-wrap lg:flex-nowrap ">
       <header className="max-w-md">
         <h1 className=" text-3xl lg:text-[40px] font-medium ">
-          Hello, {data ? data.name : "null"}
+          Halo, {data ? data.name : "null"}
         </h1>
         <h2 className="text-xl opacity-60 py-6 ">
           Selamat Datang! Dosen {data ? data.pelajaran : "Null"}
