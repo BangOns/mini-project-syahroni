@@ -95,34 +95,53 @@ export async function login(data, callback) {
 }
 
 export async function RegisterUser(data, callback) {
-  let generateDate = showFormattedDate(new Date());
-  let dateNew = {
-    date: generateDate,
-    times: `${new Date().getHours()}:${new Date().getMinutes()}`,
-    isAbsen: true,
-  };
-  const keyPassword = await bcryptjs.hash(data.password, 10);
-
-  let newUser = {
-    ...data,
-    password: keyPassword,
-    imageProfile: "",
-  };
-  if (data.role === "Mahasiswa") newUser.precence = [dateNew];
-  try {
-    await addDoc(collection(firestore, data.pelajaran), newUser);
-    return callback({
-      status: true,
-      data,
-      statusCode: 200,
-      message: "Selamat akun anda telah berhasil dibuat",
-    });
-  } catch (error) {
+  const q = collection(firestore, data.pelajaran);
+  const checkUser = query(q, where("name", "==", data.name));
+  const snapShot = await getDocs(checkUser);
+  const user = snapShot.docs.map((doc) => {
+    return {
+      id: doc.id,
+      ...doc.data(),
+    };
+  });
+  if (user.length !== 0) {
     return callback({
       status: false,
-      statusCode: 500,
-      message: "Mohon maaf ada kesalahan saat anda mendaftarkan akun",
+      data: {},
+      statusCode: 400,
+      message: "Nama sudah terdaftar",
     });
+  } else {
+    let generateDate = showFormattedDate(new Date());
+    let dateNew = {
+      date: generateDate,
+      times: `${new Date().getHours()}:${new Date().getMinutes()}`,
+      isAbsen: true,
+    };
+    const keyPassword = await bcryptjs.hash(data.password, 10);
+
+    let newUser = {
+      ...data,
+      password: keyPassword,
+      imageProfile: "",
+    };
+    if (data.role === "Mahasiswa") newUser.precence = [dateNew];
+    try {
+      await addDoc(collection(firestore, data.pelajaran), newUser);
+      return callback({
+        status: true,
+        data,
+        statusCode: 200,
+        message: "Selamat akun anda telah berhasil dibuat",
+      });
+    } catch (error) {
+      return callback({
+        status: false,
+        statusCode: 500,
+        data: {},
+        message: "Mohon maaf ada kesalahan saat anda mendaftarkan akun",
+      });
+    }
   }
 }
 export async function retrieveDataById(collect, id) {

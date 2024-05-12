@@ -8,7 +8,7 @@ export async function POST(req) {
   });
   return NextResponse.json({
     status: datas.status,
-    data: datas.data.nama,
+    data: datas.data?.nama,
     message: datas.message,
   });
 }
