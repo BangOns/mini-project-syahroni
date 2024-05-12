@@ -17,7 +17,7 @@ export default function LayoutNavbar({ children, imageProfile, name }) {
         initial={{ x: 100 }}
         animate={{ x: 0 }}
         transition={{ duration: 1 }}
-        className=" cursor-pointer lg:hidden  max-w-xs h-5 fixed top-2 flex flex-col justify-around right-7 md:right-[62px]"
+        className=" cursor-pointer lg:hidden  max-w-xs h-5 fixed top-14 md:top-2 flex flex-col justify-around right-7 md:right-[62px]"
         onClick={() => menuBarSet(true)}
       >
         <div className="w-5 h-[3px] bg-black "></div>

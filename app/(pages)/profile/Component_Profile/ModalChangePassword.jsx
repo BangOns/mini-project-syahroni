@@ -19,6 +19,8 @@ export default function ModalChangePassword({ passwordUser }) {
     if (bcryptjs.compareSync(password, passwordUser)) {
       dispatch(modalChangePassword(false));
       dispatch(changeProfile({ props: "password", value: passwordNew }));
+      passwordNewSet("");
+      passwordSet("");
     } else toast.error("Password lama tidak sesuai");
   }
 
@@ -82,6 +84,7 @@ export default function ModalChangePassword({ passwordUser }) {
                     className="shrink w-full outline-none px-2 h-full font-medium bg-white "
                     placeholder="Masukkan Password Baru"
                     autoComplete="off"
+                    required
                     value={passwordNew}
                     onChange={(e) => passwordNewSet(e.target.value)}
                   />

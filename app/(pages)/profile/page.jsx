@@ -39,9 +39,10 @@ export default async function Profile() {
       <HeaderProfile />
       {/* Form Change Profile */}
       <FormChangeProfile
-        usernames={data.name}
+        nameUser={data.name}
         idUser={data.id}
         imageProfile={data.imageProfile}
+        pelajaran={data.pelajaran}
       />
       {/* Fitur Khusus */}
       {data.role === "Dosen" ? (

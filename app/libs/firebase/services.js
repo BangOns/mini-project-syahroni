@@ -251,17 +251,21 @@ export async function updateUserPrecence(collect, data, callback) {
     ...getUsers.data(),
   };
   const updateUser = doc(firestore, collect, users.id);
-  if (data.imageProfile !== "hapus") {
-    users.imageProfile = data.imageProfile;
-  } else {
+  if (data.imageProfile === "hapus") {
     users.imageProfile = "";
+  } else if (data.imageProfile.length !== 0) {
+    users.imageProfile = data.imageProfile;
   }
   if (data.password) {
     const keyPassword = await bcryptjs.hash(data.password, 10);
     users.password = keyPassword;
   }
-  users.name =
-    data.name === users.name || data.name === "" ? users.name : data.name;
+  if (data.name === users.name || data.name === "") {
+    users.name = users.name;
+  } else {
+    users.name = data.name;
+    users.imageProfile = "";
+  }
 
   const updatesUser = users;
   await updateDoc(updateUser, updatesUser);

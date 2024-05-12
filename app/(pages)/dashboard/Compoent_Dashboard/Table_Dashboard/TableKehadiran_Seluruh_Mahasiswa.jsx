@@ -69,7 +69,7 @@ export default function TableAllHadirMahasiswa({ DataSeluruhMahasiswa }) {
                 >
                   {checkHadirMahasiswa ? "Hadir" : "Belum Hadir"}
                 </td>
-                <td className="text-start py-[18px]  flex justify-between px-0   ">
+                <td className="text-start py-[18px] flex-col gap-2 sm:gap-0  sm:flex-row flex justify-between px-0   ">
                   <figure
                     className="flex gap-2 items-center text-sm lg:text-base cursor-pointer "
                     onClick={() => {

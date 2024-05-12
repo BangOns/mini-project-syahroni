@@ -2,6 +2,7 @@
 import { storage } from "@/app/libs/firebase/init";
 import { UpdateUserById } from "@/app/libs/redux/feature/getUserSlice";
 import { modalChangePassword } from "@/app/libs/redux/feature/PopModalsSlice";
+import { changeProfile } from "@/app/libs/redux/feature/ProfileChangeSlice";
 import { Icons } from "@/app/libs/utils/IconsImport";
 import { ImageDummies } from "@/app/libs/utils/ImageDummyImport";
 import {
@@ -15,7 +16,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-export default function FormChangeProfile({ usernames, imageProfile, idUser }) {
+export default function FormChangeProfile({
+  nameUser,
+  imageProfile,
+  idUser,
+  pelajaran,
+}) {
   const { attributProfile } = useSelector((state) => state?.profileChange);
   const { UpdateUserByIDSPending, UpdateUserByIDSFullField } = useSelector(
     (state) => state?.users
@@ -24,9 +30,10 @@ export default function FormChangeProfile({ usernames, imageProfile, idUser }) {
   const [isSelectRemovePictureProfile, isSelectRemovePictureProfileSet] =
     useState(false);
   const [loadRemovePicuture, loadRemovePicutureSet] = useState(false);
-  const [username, usernameSet] = useState(usernames || "");
+  const [username, usernameSet] = useState(nameUser || "");
   const [profileImageDisplay, profileImageDisplaySet] = useState(null);
   const [profileImageFile, profileImageFileSet] = useState(null);
+  const validateUsername = username === nameUser || username.length <= 0;
   async function handleChangeImageProfile(e) {
     const file = e.target.files[0];
     const imageUrl = URL.createObjectURL(file);
@@ -37,7 +44,7 @@ export default function FormChangeProfile({ usernames, imageProfile, idUser }) {
     e.preventDefault();
     try {
       if (profileImageFile) {
-        const storageRef = refStorage(storage, `/profile/${username}.png`);
+        const storageRef = refStorage(storage, `/${pelajaran}/${username}.png`);
         await uploadBytes(storageRef, profileImageFile);
         const url = await getDownloadURL(storageRef);
         const UpdateUser = {
@@ -58,12 +65,14 @@ export default function FormChangeProfile({ usernames, imageProfile, idUser }) {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch(changeProfile({ props: "password", value: "" }));
     }
   }
   function DeleteProfilePicture() {
     loadRemovePicutureSet(true);
     try {
-      const storageRef = refStorage(storage, `/profile/${username}.png`);
+      const storageRef = refStorage(storage, `/${pelajaran}/${username}.png`);
       deleteObject(storageRef).then(() => {
         const UpdateUser = {
           id: idUser,
@@ -188,7 +197,9 @@ export default function FormChangeProfile({ usernames, imageProfile, idUser }) {
             type="submit"
             className="py-1 px-3 md:py-[11px] md:px-[22px] font-semibold bg-blue-500 rounded text-white max-sm:text-sm disabled:opacity-80"
             disabled={
-              !username && !attributProfile.password && !profileImageDisplay
+              validateUsername &&
+              !attributProfile.password &&
+              !profileImageDisplay
                 ? true
                 : false
             }
