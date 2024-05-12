@@ -6,7 +6,11 @@ export default function Error({ error, reset }) {
       <h1 className="text-5xl text-red-500 font-semibold">
         Error! Someting wrong error
       </h1>
-      <button type="button" className="rounded py-3 px-4 text-xl">
+      <button
+        type="button"
+        className="rounded py-3 px-4 text-xl"
+        onClick={() => window.location.reload()}
+      >
         Reset
       </button>
     </div>
