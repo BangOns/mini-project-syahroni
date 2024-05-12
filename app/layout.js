@@ -3,7 +3,7 @@ import "../styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ReduxProvider } from "./libs/redux/provider";
 export const metadata = {
-  title: "Atendance",
+  title: "Attendance",
 };
 
 export default function RootLayout({ children }) {

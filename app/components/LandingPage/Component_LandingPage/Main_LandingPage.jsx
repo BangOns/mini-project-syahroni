@@ -1,13 +1,18 @@
 "use client";
+import { GenerateAI } from "@/app/libs/redux/feature/GeneateAISlice";
 import { modalsFeedbackState } from "@/app/libs/redux/feature/PopModalsSlice";
 import { Icons } from "@/app/libs/utils/IconsImport";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import Markdown from "react-markdown";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function MainLandingPage({ dataUser, generateAI }) {
+export default function MainLandingPage({ dataUser }) {
+  const { textAI } = useSelector((state) => state?.aiGenerate);
   const dispatch = useDispatch();
+  useEffect(() => {
+    if (!textAI) dispatch(GenerateAI(dataUser?.pelajaran));
+  }, [textAI]);
   return (
     <article className=" lg:pl-[calc(251px+62px)] px-7 md:px-[62px] w-full pt-12    ">
       <section className="w-full pb-10 lg:pb-20 flex justify-between gap-6 lg:gap-0 flex-wrap lg:flex-nowrap">
@@ -46,16 +51,20 @@ export default function MainLandingPage({ dataUser, generateAI }) {
           <hr className="h-[2px] bg-black opacity-20" />
         </header>
         <article className="pt-3 pr-5">
-          <Markdown
-            components={{
-              li(props) {
-                const { node, ...rest } = props;
-                return <li className="my-2" {...rest} />;
-              },
-            }}
-          >
-            {generateAI}
-          </Markdown>
+          {textAI ? (
+            <Markdown
+              components={{
+                li(props) {
+                  const { node, ...rest } = props;
+                  return <li className="my-2" {...rest} />;
+                },
+              }}
+            >
+              {textAI}
+            </Markdown>
+          ) : (
+            <p className="text-2xl pt-3 font-semibold">Loading...</p>
+          )}
         </article>
       </section>
     </article>
