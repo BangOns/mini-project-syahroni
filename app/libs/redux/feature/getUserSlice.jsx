@@ -83,7 +83,7 @@ export const UserSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    Logout: (state) => {
+    ClearDataLogin: (state) => {
       state.userLoginFullField = {};
     },
     ClearDataRegister: (state) => {
@@ -138,5 +138,5 @@ export const UserSlice = createSlice({
       });
   },
 });
-export const { Logout, ClearDataRegister } = UserSlice.actions;
+export const { ClearDataLogin, ClearDataRegister } = UserSlice.actions;
 export default UserSlice.reducer;

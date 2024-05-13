@@ -27,7 +27,7 @@ export const GenerateAI = createAsyncThunk(
   }
 );
 
-const GeneateAISlice = createSlice({
+const GenerateAISlice = createSlice({
   name: "ai",
   initialState,
   extraReducers: (builder) => {
@@ -41,4 +41,4 @@ const GeneateAISlice = createSlice({
   },
 });
 
-export default GeneateAISlice.reducer;
+export default GenerateAISlice.reducer;

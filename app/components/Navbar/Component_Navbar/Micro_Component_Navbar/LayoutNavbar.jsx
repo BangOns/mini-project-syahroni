@@ -27,7 +27,7 @@ export default function LayoutNavbar({ children, imageProfile, name }) {
       <div
         className={`${
           menuBar ? "block" : "hidden"
-        }  w-screen h-screen absolute bg-slate-400/60`}
+        }  w-screen h-screen absolute z-[5] bg-slate-400/60`}
       ></div>
 
       {/* Navbar */}

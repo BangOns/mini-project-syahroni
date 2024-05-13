@@ -28,9 +28,9 @@ export default function ModalChangePassword({ passwordUser }) {
     <Fragment>
       {ModalChangePasswordsActive && (
         <div
-          className={` flex w-screen h-screen absolute bg-black/30 top-0 left-0  justify-center items-center`}
+          className={` flex w-screen h-screen fixed bg-black/30 top-0 left-0  justify-center items-center`}
         >
-          <article className=" w-full min-h-full md:w-[540px] md:min-h-[260px] bg-white">
+          <article className=" w-full h-full sm:w-[540px] sm:h-2/5 rounded bg-white">
             <header className="flex px-5 h-[50px] border-b-[1px] border-b-black/20 justify-between items-center">
               <h1 className="text-lg font-medium">Ubah Password</h1>
               <Image
@@ -41,7 +41,7 @@ export default function ModalChangePassword({ passwordUser }) {
               />
             </header>
             <form className="w-full px-5 pt-2 " onSubmit={UpdatePassword}>
-              <section className="w-full md:max-w-[437px] pb-5">
+              <section className="w-full  md:max-w-[437px] pb-5">
                 <label
                   htmlFor=""
                   className="block font-medium text-base pb-[9px]"
@@ -51,7 +51,7 @@ export default function ModalChangePassword({ passwordUser }) {
                 <div className="w-full border border-black/30 rounded h-[40px] md:h-[31px] flex items-center">
                   <input
                     type={isActivePassword ? "text" : "password"}
-                    className="shrink w-full outline-none px-2 py-[6px] h-full font-medium bg-white "
+                    className="shrink w-full outline-none px-2 py-[6px]  h-full font-medium bg-white "
                     placeholder="Masukkan Password Lama"
                     autoComplete="off"
                     value={password}

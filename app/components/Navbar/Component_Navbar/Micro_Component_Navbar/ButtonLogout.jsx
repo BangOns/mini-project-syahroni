@@ -1,4 +1,4 @@
-import { Logout } from "@/app/libs/redux/feature/getUserSlice";
+import { ClearDataLogin } from "@/app/libs/redux/feature/getUserSlice";
 import { Icons } from "@/app/libs/utils/IconsImport";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -17,7 +17,7 @@ export default function ButtonLogout() {
       const data = await response.json();
       router.push("/login");
       toast.success(data.message);
-      dispath(Logout());
+      dispath(ClearDataLogin());
     } catch (error) {
       toast.error("Logout Gagal");
     }

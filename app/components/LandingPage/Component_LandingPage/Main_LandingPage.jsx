@@ -1,5 +1,5 @@
 "use client";
-import { GenerateAI } from "@/app/libs/redux/feature/GeneateAISlice";
+import { GenerateAI } from "@/app/libs/redux/feature/GenerateAISlice";
 import { modalsFeedbackState } from "@/app/libs/redux/feature/PopModalsSlice";
 import { Icons } from "@/app/libs/utils/IconsImport";
 import Image from "next/image";
