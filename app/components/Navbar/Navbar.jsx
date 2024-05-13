@@ -3,7 +3,6 @@ import React, { Fragment } from "react";
 import LayoutNavbar from "./Component_Navbar/Micro_Component_Navbar/LayoutNavbar";
 import { ListLink } from "@/app/libs/utils/List_Link_Navbar";
 import LinkNavbar from "./Component_Navbar/Micro_Component_Navbar/LinkNavbar";
-import { useSelector } from "react-redux";
 import { cookies } from "next/headers";
 import { retrieveDataById } from "@/app/libs/firebase/services";
 
