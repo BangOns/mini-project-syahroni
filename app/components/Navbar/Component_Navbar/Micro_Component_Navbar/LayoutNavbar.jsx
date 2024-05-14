@@ -27,7 +27,7 @@ export default function LayoutNavbar({ children, imageProfile, name }) {
       <div
         className={`${
           menuBar ? "block" : "hidden"
-        }  w-screen h-screen absolute z-[5] bg-slate-400/60`}
+        }  w-screen h-screen fixed z-[5] bg-slate-400/60`}
       ></div>
 
       {/* Navbar */}
@@ -83,7 +83,7 @@ export default function LayoutNavbar({ children, imageProfile, name }) {
       </aside>
       {/*  Option Profile */}
       <section
-        className={`w-screen h-screen absolute top-0 left-0 bg-slate-200/30 z-10 ${
+        className={`w-screen h-screen fixed top-0 left-0 bg-slate-200/30 z-10 ${
           menuOptions ? "block" : "hidden"
         }   `}
         onClick={() => menuOptionsSet(false)}
